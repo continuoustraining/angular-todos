@@ -1,0 +1,64 @@
+<section class="app-container"
+         fxLayout="row"
+         fxLayoutAlign="space-around start">
+
+  <div fxFlex="100"
+       fxFlex.gt-sm="66"
+       fxFlex.gt-lg="35">
+    <form [formGroup]="addItemForm"
+          #form="ngForm"
+          (ngSubmit)="onSubmit(addItemForm)"
+          novalidate>
+      <div>
+        <md-input-container>
+          <input type="text"
+                 mdInput
+                 formControlName="label"
+                 placeholder="Enter a to-do...">
+        </md-input-container>
+      </div>
+
+      <div *ngIf="addItemForm.get('label').valid">
+        <div>
+          <md-select fxFlex="25"
+                     placeholder="Assign"
+                     formControlName="assigned">
+            <md-option *ngFor="let people of peoples" [value]="people">
+              {{people}}
+            </md-option>
+          </md-select>
+        </div>
+
+        <div>
+          <button md-button
+                  type="submit"
+                  color="accent">
+            SAVE
+          </button>
+        </div>
+
+        <hr/>
+        <br />
+      </div>
+    </form>
+
+    <div>
+      <md-card *ngFor="let todo of todos">
+        <md-card-content>
+          <md-checkbox md-list-icon
+                       [indeterminate]="indeterminate"
+                       [align]="align"></md-checkbox>
+          <div>
+            <h3>{{todo.label}}</h3>
+          </div>
+        </md-card-content>
+        <md-card-actions align="end">
+          <button md-icon-button>
+            <md-icon>delete_forever</md-icon>
+          </button>
+        </md-card-actions>
+      </md-card>
+    </div>
+  </div>
+
+</section>

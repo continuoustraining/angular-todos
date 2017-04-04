@@ -1,0 +1,64 @@
+@import '~@angular/material/_theming';
+
+// Define a theme.
+/*$primary: mat-palette($mat-deep-orange);
+$accent:  mat-palette($mat-deep-orange);
+$theme: mat-light-theme($primary, $accent);
+
+$foreground: map-get($theme, foreground);
+$danger: map-get($theme, warn);*/
+
+@include mat-core();
+
+$primary: mat-palette($mat-indigo);
+$accent:  mat-palette($mat-pink, A200, A100, A400);
+$danger: mat-palette($mat-red);
+
+$theme: mat-light-theme($primary, $accent, $danger);
+
+@include angular-material-theme($theme);
+
+/**
+ * Mixin Breakpoint responsive
+ * @author http://responsivedesign.is
+ */
+@mixin breakpoint($point) {
+  @if $point == desktop {
+    @media (min-width: 70em) { @content ; }
+  }
+  @else if $point == laptop {
+    @media (min-width: 64em) { @content ; }
+  }
+  @else if $point == tablet {
+    @media (min-width: 50em) { @content ; }
+  }
+  @else if $point == phablet {
+    @media (min-width: 37.5em)  { @content ; }
+  }
+  @else if $point == mobileonly {
+    @media (max-width: 37.5em)  { @content ; }
+
+  }
+}
+
+$mat-body-font-size-base: rem(1.4) !default;
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: mat-color($primary, 50);
+
+  font-size: $mat-body-font-size-base;
+
+  @include breakpoint(tablet) {
+    font-size: rem(2);
+  }
+
+  @include breakpoint(laptop) {
+    font-size: rem(2.5);
+  }
+
+  @include breakpoint(desktop) {
+    font-size: rem(3);
+  }
+}

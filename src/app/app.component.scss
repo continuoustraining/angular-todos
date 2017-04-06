@@ -1,5 +1,12 @@
 @import "../styles";
 
+:host {
+  //border: 1px solid red;
+}
+.appWrapper {
+  //border: inherit;
+}
+
 md-toolbar {
   background-color: mat-color($primary, 600);
   color: mat-color($primary, 50);

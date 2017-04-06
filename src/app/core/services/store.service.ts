@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs/Rx";
+import { Observable } from "rxjs/Rx";
 
 @Injectable()
 export class StoreService {
@@ -7,8 +7,7 @@ export class StoreService {
   constructor() { }
 
   public addTodo(item: TodoModel): Observable<boolean> {
-
-    let todos = this.getTodos();
+    const todos = this.getTodos();
 
     localStorage.setItem('todos', JSON.stringify([
       ...todos,
@@ -22,7 +21,7 @@ export class StoreService {
   }
 
   public listTodo(): Observable<TodoModel[]> {
-    let todos = this.getTodos();
+    const todos = this.getTodos();
 
     return Observable
       .of(todos)
@@ -31,7 +30,7 @@ export class StoreService {
   }
 
   protected getTodos() {
-    let todosJson = localStorage.getItem('todos');
+    const todosJson = localStorage.getItem('todos');
 
     if (null === todosJson) {
       return [];

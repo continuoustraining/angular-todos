@@ -1,0 +1,25 @@
+@import "../../styles";
+
+:host, .cover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cover {
+  background-color: mat-color($accent, 100);
+  opacity: 0.5;
+  z-index: 100;
+}
+
+md-spinner {
+  z-index: 200;
+}

@@ -1,10 +1,15 @@
 <section class="app-container"
          fxLayout="row"
-         fxLayoutAlign="space-around start">
+         fxLayoutAlign="space-around">
 
   <div fxFlex="100"
-       fxFlex.gt-sm="66"
+       fxFlex.gt-sm="70"
        fxFlex.gt-lg="35">
+
+    <div style="width: 100%; text-align: center">
+      Hello
+    </div>
+
     <form [formGroup]="addItemForm"
           #form="ngForm"
           (ngSubmit)="onSubmit(addItemForm)"
@@ -30,7 +35,7 @@
         </div>
 
         <div>
-          <button md-button
+          <button md-raised-button
                   type="submit"
                   color="accent">
             SAVE
@@ -46,6 +51,7 @@
       <md-card *ngFor="let todo of todos">
         <md-card-content>
           <md-checkbox md-list-icon
+                       [checked]="!(null === todo.assigned)"
                        [indeterminate]="indeterminate"
                        [align]="align"></md-checkbox>
           <div>

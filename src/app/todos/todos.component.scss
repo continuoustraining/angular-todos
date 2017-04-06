@@ -1,9 +1,10 @@
 @import "../../styles";
 
 section.app-container {
-  display: block;
   padding-top: 0;
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 60px);
+
+  background: mat-color($primary, 100);
 
   md-select,
   md-input-container {

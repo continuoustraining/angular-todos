@@ -3,7 +3,7 @@ import {Directive, Input, ElementRef, OnChanges} from '@angular/core';
 @Directive({
   selector: '[appBlur]'
 })
-export class BlurDirective implements OnChanges {
+export class BlurDirective /*implements OnChanges*/ {
 
   @Input('activate') activate: boolean;
 
@@ -22,8 +22,7 @@ export class BlurDirective implements OnChanges {
   }
 
   ngOnChanges() {
-
-    console.log(this.activate);
+    console.log('ngOnChanges ', this.activate);
 
     if (true === this.activate) {
       this.enable();

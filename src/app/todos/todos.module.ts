@@ -7,6 +7,7 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 import { TodosComponent } from './todos.component';
 import { StoreService } from '../core/services/store.service';
+import {EventService} from "../core/event.service";
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { StoreService } from '../core/services/store.service';
     TodosComponent
   ],
   providers: [
-    StoreService
+    StoreService,
+    EventService
   ]
 })
 export class TodosModule { }

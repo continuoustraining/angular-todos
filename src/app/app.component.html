@@ -1,6 +1,6 @@
-<app-loader #loader></app-loader>
+<app-loader (onStateChange)="loaderStateChange($event)"></app-loader>
 <section  appBlur
-          [activate]="loader.isLoading()"
+          [activate]="loaderAnimation"
           class="appWrapper">
   <md-toolbar color="accent">
     <h1>{{title}}</h1>

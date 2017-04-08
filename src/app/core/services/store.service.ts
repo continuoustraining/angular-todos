@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs/Rx";
+import {EventService} from "../event.service";
 
 @Injectable()
 export class StoreService {
 
-  constructor() { }
+  constructor(
+    private event: EventService
+  ) { }
 
   public addTodo(item: TodoModel): Observable<boolean> {
+    this.event.dispatch('loader', 'saving');
     const todos = this.getTodos();
 
     localStorage.setItem('todos', JSON.stringify([
@@ -15,17 +19,30 @@ export class StoreService {
     ]));
 
     return Observable
-      .of(true)
-      .delay(300)
+      .create((observer) => {
+        observer.onNext(true);
+        observer.onCompleted();
+      })
+      .delay(3000)
+      .finally(() => {
+        this.event.dispatch('loader', 'done');
+      })
     ;
   }
 
   public listTodo(): Observable<TodoModel[]> {
+    this.event.dispatch('loader', 'saving');
     const todos = this.getTodos();
 
     return Observable
-      .of(todos)
-      .delay(100)
+      .create((observer) => {
+        observer.next(todos);
+        observer.complete();
+      })
+      .delay(3000)
+      .finally(() => {
+        this.event.dispatch('loader', 'done');
+      })
     ;
   }
 

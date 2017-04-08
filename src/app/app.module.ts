@@ -11,6 +11,7 @@ import { TodosModule } from './todos/todos.module';
 import 'hammerjs';
 import { LoaderComponent } from './loader/loader.component';
 import { BlurDirective } from './loader/blur.directive';
+import {EventService} from "./core/event.service";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { BlurDirective } from './loader/blur.directive';
     FlexLayoutModule,
     TodosModule,
   ],
-  providers: [],
+  providers: [
+    EventService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

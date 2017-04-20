@@ -46,7 +46,7 @@ export class TodosComponent implements OnInit {
     })
   }
 
-  onSubmit({value, valid}: {value: TodoModel, valid: boolean}) {
+  protected onSubmit({value, valid}: {value: TodoModel, valid: boolean}) {
     if (!valid) {
       return
     }
@@ -58,5 +58,4 @@ export class TodosComponent implements OnInit {
       }
     })
   }
-
 }

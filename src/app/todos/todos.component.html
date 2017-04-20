@@ -48,22 +48,10 @@
     </form>
 
     <div>
-      <md-card *ngFor="let todo of todos">
-        <md-card-content>
-          <md-checkbox md-list-icon
-                       [checked]="!(null === todo.assigned)"
-                       [indeterminate]="indeterminate"
-                       [align]="align"></md-checkbox>
-          <div>
-            <h3>{{todo.label}}</h3>
-          </div>
-        </md-card-content>
-        <md-card-actions align="end">
-          <button md-icon-button>
-            <md-icon>delete_forever</md-icon>
-          </button>
-        </md-card-actions>
-      </md-card>
+      <app-todo *ngFor="let todo of todos"
+                [label]="todo.label"
+                [finished]="(todo.achieved)"
+                (onDeleted)="refresh()"></app-todo>
     </div>
   </div>
 

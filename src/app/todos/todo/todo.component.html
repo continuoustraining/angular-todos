@@ -1,3 +1,17 @@
-<p>
-  todo works!
-</p>
+<md-card>
+  <md-card-content>
+    <md-checkbox md-list-icon
+                 [checked]="finished"
+                 [indeterminate]="indeterminate"
+                 [align]="'align'"></md-checkbox>
+    <div>
+      <h3>{{label}}</h3>
+    </div>
+  </md-card-content>
+  <md-card-actions align="end">
+    <button md-icon-button
+            (click)="remove()">
+      <md-icon>delete_forever</md-icon>
+    </button>
+  </md-card-actions>
+</md-card>

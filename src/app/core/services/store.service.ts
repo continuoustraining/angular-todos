@@ -5,9 +5,15 @@ import {EventService} from "../event.service";
 @Injectable()
 export class StoreService {
 
+  protected static removeFromLabel(collection: TodoModel[], label: string) {
+    return collection.filter((todo) => todo.label !== label)
+  }
+
   constructor(
     private event: EventService
-  ) { }
+  ) {
+    this.deleteTodoOnEvent();
+  }
 
   public addTodo(item: TodoModel): Observable<boolean> {
     this.event.dispatch('loader', 'saving');
@@ -23,7 +29,7 @@ export class StoreService {
         observer.onNext(true);
         observer.onCompleted();
       })
-      .delay(3000)
+      .delay(1000)
       .finally(() => {
         this.event.dispatch('loader', 'done');
       })
@@ -39,7 +45,7 @@ export class StoreService {
         observer.next(todos);
         observer.complete();
       })
-      .delay(3000)
+      .delay(1000)
       .finally(() => {
         this.event.dispatch('loader', 'done');
       })
@@ -54,5 +60,17 @@ export class StoreService {
     }
 
     return JSON.parse(todosJson);
+  }
+
+  protected saveTodos(todos: TodoModel[]) {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }
+
+  protected deleteTodoOnEvent() {
+    this.event.deleterEvent.subscribe((label) => {
+      const todos = StoreService.removeFromLabel(this.getTodos(), label);
+
+      this.saveTodos(todos);
+    })
   }
 }

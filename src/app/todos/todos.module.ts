@@ -8,6 +8,7 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { TodosComponent } from './todos.component';
 import { StoreService } from '../core/services/store.service';
 import {EventService} from "../core/event.service";
+import { TodoComponent } from './todo/todo.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import {EventService} from "../core/event.service";
     TodosComponent
   ],
   declarations: [
-    TodosComponent
+    TodosComponent,
+    TodoComponent
   ],
   providers: [
     StoreService,

@@ -13,7 +13,8 @@
     <form [formGroup]="addItemForm"
           #form="ngForm"
           (ngSubmit)="onSubmit(addItemForm)"
-          novalidate>
+          novalidate
+          name="addItemForm">
       <div>
         <md-input-container>
           <input type="text"

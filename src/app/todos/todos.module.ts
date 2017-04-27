@@ -9,6 +9,7 @@ import { TodosComponent } from './todos.component';
 import { StoreService } from '../core/services/store.service';
 import {EventService} from "../core/event.service";
 import { TodoComponent } from './todo/todo.component';
+import { AddFormComponent } from './add-form/add-form.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { TodoComponent } from './todo/todo.component';
   ],
   declarations: [
     TodosComponent,
-    TodoComponent
+    TodoComponent,
+    AddFormComponent
   ],
   providers: [
     StoreService,
